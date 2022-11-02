@@ -12,21 +12,21 @@ namespace ProductScraping.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ScrapperController : Controller
+    public class ScrapperController : ControllerBase
     {
         private readonly ILogger<ScrapperController> _logger;
-        private IScrapperServices scrapperServices;
+        private IScrapperServices _scrapperServices;
 
-        public ScrapperController(ILogger<ScrapperController> logger, IServiceProvider provider)
+        public ScrapperController(ILogger<ScrapperController> logger, IScrapperServices scrapperServices)
         {
             _logger = logger;
-            scrapperServices = provider.GetRequiredService<ScrapperServices>();
+            _scrapperServices = scrapperServices;
         }
 
         [HttpPost]
-        public async Task<Product> FetchProductAsync([FromBody] string url)
+        public async Task<Product> FetchProductAsync([FromQuery] string url)
         {
-            return await scrapperServices.FetchProductAsync(url);
+            return await _scrapperServices.FetchProductAsync(url);
         }
     }
 }

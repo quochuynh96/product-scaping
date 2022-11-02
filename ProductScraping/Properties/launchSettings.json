@@ -12,8 +12,7 @@
     "ProductScraping": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7271;http://localhost:5164",
+      "applicationUrl": "http://localhost:1491",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
